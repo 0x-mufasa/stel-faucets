@@ -326,31 +326,43 @@ export function App() {
   }
 
   return (
-    <main>
+    <main className="grid min-h-dvh place-items-center bg-[#f8f7f3] bg-[linear-gradient(90deg,rgba(17,17,17,0.04)_1px,transparent_1px),linear-gradient(rgba(17,17,17,0.032)_1px,transparent_1px)] bg-[length:74px_74px] p-[18px] font-['Instrument_Sans',system-ui,sans-serif] text-[#111111] antialiased">
       <Toaster closeButton position="top-center" richColors />
-      <section className="faucet-shell">
-        <header className="faucet-header">
-          <a className="brand" href="#">
-            <span className="brand-mark" aria-hidden="true">
-              <span />
+      <section className="grid w-full max-w-[560px] -translate-y-[9vh] justify-items-center gap-3">
+        <header className="grid justify-items-center gap-2 text-center">
+          <a
+            className="inline-flex items-center gap-3 text-[clamp(2.1rem,7vw,3.1rem)] font-bold leading-none no-underline"
+            href="#"
+          >
+            <span className="relative inline-grid h-9 w-9 place-items-center" aria-hidden="true">
+              <span className="absolute top-[5px] h-[5px] w-[34px] rotate-[-24deg] rounded-full border-[3px] border-r-0 border-[#111111]" />
+              <span className="absolute top-3.5 h-[5px] w-[29px] rotate-[-24deg] rounded-full border-[3px] border-r-0 border-[#111111]" />
+              <span className="absolute top-[23px] h-[5px] w-[23px] rotate-[-24deg] rounded-full border-[3px] border-r-0 border-[#111111]" />
             </span>
             <span>Stellar Faucet</span>
           </a>
-          <p>Testnet XLM for builders.</p>
+          <p className="m-0 text-[1.15rem] font-semibold text-[#7a7a7a]">
+            Testnet XLM for builders.
+          </p>
         </header>
 
-        <div className="balance-display">
+        <div className="mt-2.5 text-center font-['Instrument_Serif',Georgia,serif] text-[clamp(4rem,14vw,6.5rem)] leading-[0.9] text-[#24313f]">
           {Number(balance).toLocaleString(undefined, {
             maximumFractionDigits: 7,
           })}{" "}
-          <span>XLM</span>
+          <span className="font-['Instrument_Sans',system-ui,sans-serif] text-[0.68em] font-bold">
+            XLM
+          </span>
         </div>
 
         {connected ? (
           <>
-            <label className="address-field">
-              <span>Wallet address</span>
+            <label className="grid w-full gap-2">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-[#7a7a7a]">
+                Wallet address
+              </span>
               <input
+                className="min-h-[46px] w-full rounded-xl border border-[#d7d3c9] bg-[#fffdf8] px-3.5 text-center font-['DM_Mono',monospace] text-base font-medium text-[#111111] outline-none focus:border-[#111111] focus:shadow-[0_0_0_3px_#1479ff]"
                 value={faucetAddress}
                 onChange={(event) => setFaucetAddress(event.target.value)}
                 placeholder="G..."
@@ -358,20 +370,23 @@ export function App() {
               />
             </label>
             <button
-              className="primary-button"
+              className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full border border-[#111111] bg-[#111111] px-[22px] font-bold text-white shadow-[0_0_0_3px_#1479ff] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:h-[30px] [&_svg]:w-[30px] [&_svg]:rounded-full [&_svg]:bg-[#ffd92e] [&_svg]:p-[7px] [&_svg]:text-[#111111] [&_svg.lucide-loader-2]:animate-spin"
               onClick={requestTestnetXlm}
               disabled={isFunding || !canRequest}
             >
               {isFunding ? <Loader2 size={18} /> : <Wallet size={18} />}
               Request testnet XLM
             </button>
-            <button className="text-button" onClick={disconnectWallet}>
+            <button
+              className="cursor-pointer border-0 bg-transparent font-bold text-[#6f6f6f] underline underline-offset-4"
+              onClick={disconnectWallet}
+            >
               Disconnect wallet
             </button>
           </>
         ) : (
           <button
-            className="primary-button"
+            className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full border border-[#111111] bg-[#111111] px-[22px] font-bold text-white shadow-[0_0_0_3px_#1479ff] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:h-[30px] [&_svg]:w-[30px] [&_svg]:rounded-full [&_svg]:bg-[#ffd92e] [&_svg]:p-[7px] [&_svg]:text-[#111111] [&_svg.lucide-loader-2]:animate-spin"
             onClick={connectWallet}
             disabled={isConnecting}
           >
@@ -380,11 +395,20 @@ export function App() {
           </button>
         )}
 
-        <aside className={`status-card ${notice.kind}`}>
-          <strong>{notice.title}</strong>
-          <p>{notice.message}</p>
+        <aside
+          className={`mt-1 w-full rounded-xl border border-[#dedbd2] bg-[rgba(255,253,248,0.74)] px-4 py-3.5 text-center ${
+            notice.kind === "error"
+              ? "border-red-200"
+              : notice.kind === "success"
+                ? "border-green-200"
+                : ""
+          }`}
+        >
+          <strong className="block text-[0.95rem]">{notice.title}</strong>
+          <p className="mt-1 text-[#707070]">{notice.message}</p>
           {notice.hash ? (
             <a
+              className="mt-2.5 inline-flex max-w-full items-center gap-2 [overflow-wrap:anywhere] font-['DM_Mono',monospace] text-xs underline underline-offset-4"
               href={`https://stellar.expert/explorer/testnet/tx/${notice.hash}`}
               target="_blank"
               rel="noreferrer"
@@ -394,6 +418,7 @@ export function App() {
             </a>
           ) : connected ? (
             <a
+              className="mt-2.5 inline-flex max-w-full items-center gap-2 [overflow-wrap:anywhere] font-['DM_Mono',monospace] text-xs underline underline-offset-4"
               href={`https://stellar.expert/explorer/testnet/account/${publicKey}`}
               target="_blank"
               rel="noreferrer"

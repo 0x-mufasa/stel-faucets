@@ -5,6 +5,8 @@ testnet XLM in one click.
 
 The interface is intentionally small: connect, request XLM, confirm the result.
 
+Live app: [https://stelfaucet.netlify.app/](https://stelfaucet.netlify.app/)
+
 ## Features
 
 - Connect and disconnect a Freighter wallet.
@@ -17,6 +19,7 @@ The interface is intentionally small: connect, request XLM, confirm the result.
 ## Tech Stack
 
 - React + Vite + TypeScript
+- Tailwind CSS
 - Freighter API
 - Horizon testnet
 - Stellar Friendbot
