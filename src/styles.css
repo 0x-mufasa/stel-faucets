@@ -41,16 +41,17 @@ a {
 
 main {
   display: grid;
-  min-height: 100vh;
+  min-height: 100dvh;
   place-items: center;
-  padding: 32px 18px;
+  padding: 18px;
 }
 
 .faucet-shell {
   display: grid;
   width: min(560px, 100%);
   justify-items: center;
-  gap: 18px;
+  gap: 16px;
+  transform: translateY(-2vh);
 }
 
 .faucet-header {
@@ -119,7 +120,7 @@ main {
 }
 
 .balance-display {
-  margin-top: 24px;
+  margin-top: 10px;
   color: #24313f;
   font-family: "Instrument Serif", Georgia, serif;
   font-size: clamp(4rem, 14vw, 6.5rem);

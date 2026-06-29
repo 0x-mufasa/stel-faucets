@@ -52,32 +52,22 @@ npm run build
 
 ## Screenshots
 
-Add the final challenge screenshots here after testing with Freighter:
+Current app screenshots:
 
-### Wallet connected state
+### Disconnected wallet state
 
-![Wallet connected state](docs/screenshots/wallet-connected.png)
+![Disconnected wallet state](docs/screenshots/disconnected-wallet.png)
 
-### Balance displayed
+### Wallet connected state and balance displayed
 
-![Balance displayed](docs/screenshots/balance-displayed.png)
+![Wallet connected state and balance displayed](docs/screenshots/wallet-connected-and-balance-displayed.png)
 
 ### Successful testnet transaction
 
 ![Successful testnet transaction](docs/screenshots/successful-testnet-transaction.png)
 
-The successful transaction screenshot should show the `XLM received` status and
-the Stellar Expert transaction hash link displayed by the app.
+This screenshot shows the funded account and balance on Stellar Expert testnet.
 
-## Submission Checklist
-
-- Public GitHub repository.
-- Project description in this README.
-- Local setup instructions in this README.
-- Wallet connected screenshot.
-- Balance displayed screenshot.
-- Successful testnet transaction screenshot.
-- Transaction result shown in the UI.
 
 ## Project Structure
 
