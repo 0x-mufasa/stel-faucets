@@ -348,7 +348,8 @@ export function App() {
 
         <div className="mt-2.5 text-center font-['Instrument_Serif',Georgia,serif] text-[clamp(4rem,14vw,6.5rem)] leading-[0.9] text-[#24313f]">
           {Number(balance).toLocaleString(undefined, {
-            maximumFractionDigits: 7,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
           })}{" "}
           <span className="font-['Instrument_Sans',system-ui,sans-serif] text-[0.68em] font-bold">
             XLM
