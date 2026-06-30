@@ -1,7 +1,7 @@
 # Stellar Testnet Faucet
 
-A simple Level 1 White Belt dApp for connecting Freighter and requesting Stellar
-testnet XLM in one click.
+A simple Stellar testnet faucet for connecting Freighter and requesting testnet
+XLM in one click.
 
 The interface is intentionally small: connect, request XLM, confirm the result.
 
@@ -89,5 +89,5 @@ This screenshot shows the funded account and balance on Stellar Expert testnet.
 └── README.md
 ```
 
-This is a UI-only Stellar dApp for the Level 1 challenge. No Soroban contract is
-required for this submission.
+This is a frontend-only Stellar faucet. It uses Freighter, Horizon testnet, and
+Friendbot without requiring a smart contract.
